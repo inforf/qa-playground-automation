@@ -58,16 +58,17 @@ node scripts/ai-report.js
 
 ## Estrutura do Projeto
 
+```text
 qa-playground-automation/
 ├── README.md
 ├── docs/
-│ └── relatorio-execucao.md
+│   └── relatorio-execucao.md
 ├── reports/
-│ └── report.json
+│   └── report.json
 ├── scripts/
-│ └── ai-report.js
+│   └── ai-report.js
 ├── tests/
-│ └── qa-playground.spec.ts
+│   └── qa-playground.spec.ts
 ├── playwright.config.ts
 └── package.json
 
