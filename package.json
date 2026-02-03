@@ -1,6 +1,7 @@
 {
   "name": "qa-playground-automation",
   "version": "1.0.0",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,5 +20,8 @@
   "description": "",
   "devDependencies": {
     "@playwright/test": "^1.58.1"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3"
   }
 }
