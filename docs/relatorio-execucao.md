@@ -7,7 +7,8 @@ Durante a execução dos testes automatizados no QA Playground, foram identifica
 As falhas observadas indicam problemas de controle de estado, validação de fluxos e experiência do usuário, que podem comprometer a confiabilidade da aplicação em ambiente produtivo caso não sejam tratadas adequadamente.
 
 2. Análise por Cenário
-   Cenário 1 – Modal que não fecha
+
+Cenário 1 – Modal que não fecha
 
 Tipo de defeito: Funcional / Usabilidade
 Severidade: Alta
