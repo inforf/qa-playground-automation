@@ -1,78 +1,129 @@
-# QA Playground – Automação e Análise de Risco
+# QA Playground Automation
 
-Este repositório contém um projeto de automação de testes E2E desenvolvido com Playwright, utilizando cenários com falhas intencionais para demonstrar não apenas a execução dos testes, mas principalmente a análise de impacto, severidade e risco para o negócio.
+Automação de testes end-to-end criada para validar, reproduzir e
+analisar comportamentos do **QA Playground**, um ambiente
+propositalmente construído com falhas funcionais semelhantes às
+encontradas em sistemas reais.
 
-O objetivo do projeto é evidenciar uma atuação de QA focada em qualidade de ponta a ponta, indo além do “teste passou ou falhou”.
+O objetivo deste projeto não é apenas executar testes automatizados.
 
-## Objetivo do Projeto
+É demonstrar o ciclo completo de qualidade:
 
-- Demonstrar automação de testes em cenários reais de falha
-- Executar testes sem interrupção mesmo diante de erros
-- Coletar evidências automaticamente
-- Gerar relatório técnico com análise de impacto para usuário e negócio
-- Simular um fluxo próximo ao utilizado em ambientes corporativos
+**observar → reproduzir → automatizar → interpretar → prevenir**
 
-## Cenários Automatizados
+------------------------------------------------------------------------
 
-Os testes automatizados cobrem os seguintes cenários com falhas intencionais:
+## O que este projeto demonstra
 
-- Modal que não fecha
-- API com resposta lenta
-- Formulário com validação incorreta
+Este repositório simula a atuação de QA após a identificação de
+comportamentos suspeitos em um sistema.
 
-Os cenários estão localizados em:
-tests/qa-playground.spec.ts
+A automação:
 
-## Automação e Execução
+-   reproduz cenários de erro
+-   valida fluxos críticos
+-   coleta evidências
+-   gera relatórios estruturados
+-   envia os resultados para análise inteligente
 
-- Framework: Playwright
-- Linguagem: TypeScript
-- Execução contínua dos testes, mesmo com falhas
-- Geração automática de evidências
+Ou seja, não é somente automação de clique.
 
-Para executar os testes:
-npx playwright test
+É suporte à decisão de qualidade.
 
-## Relatório de Execução
+------------------------------------------------------------------------
 
-Após a execução dos testes, é gerado um relatório técnico contendo:
+## Integração com análise por IA (Ollama)
 
-- Resumo executivo
-- Análise por cenário
-- Classificação de severidade
-- Impacto para o usuário
-- Risco para o negócio
+Após a execução dos testes, o relatório gerado pelo Playwright é enviado
+para uma **IA local executando via Ollama**.
 
-Relatório disponível em:
-docs/relatorio-execucao.md
+A IA interpreta:
 
-## Análise com IA Local
+-   padrões de falha
+-   recorrência de erros
+-   impacto funcional
+-   risco para o usuário
+-   prioridade de correção
 
-O projeto inclui um script que analisa os resultados do Playwright e gera o relatório técnico utilizando uma LLM local (Ollama), sem dependência de serviços externos.
+O resultado não é apenas um relatório técnico.
 
-Script:
-scripts/ai-report.js
+É uma **análise contextualizada do risco do sistema**.
 
-Execução:
-node scripts/ai-report.js
+Isso simula um cenário próximo do mundo real:\
+a equipe não precisa somente saber *o que falhou*, mas *o que pode
+acontecer com o cliente*.
 
-## Estrutura do Projeto
+------------------------------------------------------------------------
 
-```md
-qa-playground-automation/
-├── README.md
-├── docs/
-│   └── relatorio-execucao.md
-├── reports/
-│   └── report.json
-├── scripts/
-│   └── ai-report.js
-├── tests/
-│   └── qa-playground.spec.ts
-├── playwright.config.ts
-└── package.json
-```
+## Tecnologias utilizadas
 
-## Considerações Finais
+-   Playwright
+-   JavaScript / Node.js
+-   Relatórios HTML do Playwright
+-   Integração com LLM local via Ollama
+-   Testes E2E orientados a comportamento
 
-Este projeto demonstra uma abordagem madura de QA, com foco em automação, análise crítica de falhas e comunicação clara de riscos para o negócio.
+------------------------------------------------------------------------
+
+## Estrutura dos testes
+
+Os testes cobrem:
+
+-   login
+-   navegação
+-   formulários
+-   persistência de estado
+-   validações incorretas
+-   inconsistências de fluxo
+
+O foco não é apenas verificar se a página responde.
+
+O foco é validar se **o usuário consegue concluir a tarefa**.
+
+------------------------------------------------------------------------
+
+## Como executar
+
+Instalar dependências: ```npx playwright install```
+
+Executar testes: ```npx playwright test```
+
+Abrir relatório: ```npx playwright show-report```
+
+------------------------------------------------------------------------
+
+## O que deve ser observado no relatório
+
+Mais importante que "teste passou" ou "teste falhou" é entender:
+
+-   qual fluxo foi impactado
+-   qual ação o usuário não consegue concluir
+-   qual risco existe se for liberado
+
+Qualidade não é apenas detectar defeitos.
+
+É impedir impacto ao usuário final.
+
+------------------------------------------------------------------------
+
+## Objetivo do projeto
+
+Este projeto demonstra que automação de testes não deve servir apenas
+para bloquear deploy.
+
+Ela deve:
+
+-   antecipar problemas
+-   orientar decisões
+-   apoiar desenvolvimento
+-   reduzir risco em produção
+
+Quanto mais cedo o risco é identificado, menor o custo e maior a
+confiança na entrega.
+
+------------------------------------------------------------------------
+
+## Autor
+
+Ronaldo Ferreira\
+https://github.com/inforf
