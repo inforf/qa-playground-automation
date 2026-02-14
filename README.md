@@ -84,11 +84,20 @@ O foco é validar se **o usuário consegue concluir a tarefa**.
 
 ## Como executar
 
-Instalar dependências: ```  npx playwright install```
+Instalar dependências:  
+```  
+npx playwright install
+```
 
-Executar testes: ```  npx playwright test```
+Executar testes:  
+```  
+npx playwright test
+```
 
-Abrir relatório: ```  npx playwright show-report```
+Abrir relatório:  
+```  
+npx playwright show-report
+```
 
 ------------------------------------------------------------------------
 
