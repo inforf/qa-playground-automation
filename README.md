@@ -1,134 +1,125 @@
-# QA Automation Portfolio
+# QA Playground Automation
 
-Este repositório demonstra a **validação contínua de qualidade** por
-meio de automação, integração e análise de resultados.
+Automação de testes end-to-end criada para validar, reproduzir e
+analisar comportamentos do **QA Playground**, um ambiente
+propositalmente construído com falhas funcionais semelhantes às
+encontradas em sistemas reais.
 
-Aqui o foco não é apenas executar testes automatizados --- é **usar
-automação para apoiar decisão de entrega**.
+O objetivo deste projeto não é apenas executar testes automatizados.
 
-O objetivo é mostrar como testes deixam de ser uma atividade isolada e
-passam a integrar o fluxo real de desenvolvimento.
+É demonstrar o ciclo completo de qualidade:
 
-------------------------------------------------------------------------
-
-## Objetivo
-
-Garantir que mudanças no sistema possam ser avaliadas rapidamente quanto
-a:
-
--   risco funcional
--   impacto de regressão
--   comportamento do usuário
--   estabilidade do fluxo principal
-
-A automação aqui funciona como **instrumento de prevenção**, permitindo
-identificar problemas antes que cheguem ao usuário final.
+**observar → reproduzir → automatizar → interpretar → prevenir**
 
 ------------------------------------------------------------------------
 
 ## O que este projeto demonstra
 
-Este projeto evidencia competências práticas em:
+Este repositório simula a atuação de QA após a identificação de
+comportamentos suspeitos em um sistema.
 
--   automação de testes E2E
--   testes de API
--   organização de cenários de validação
--   geração de relatórios
--   execução em pipeline CI
--   análise de falhas
--   apoio à decisão de release
+A automação:
 
-A proposta não é substituir o QA humano --- e sim **ampliar sua
-capacidade de análise**.
+-   reproduz cenários de erro
+-   valida fluxos críticos
+-   coleta evidências
+-   gera relatórios estruturados
+-   envia os resultados para análise inteligente
 
-------------------------------------------------------------------------
+Ou seja, não é somente automação de clique.
 
-## Estrutura
-
-Os testes são organizados por comportamento da aplicação:
-
-    tests/
-     ├─ login
-     ├─ navegação
-     ├─ carrinho / fluxo principal
-     ├─ validações
-     └─ API
-
-Cada cenário busca validar o que realmente importa:\
-se o usuário consegue concluir sua tarefa.
+É suporte à decisão de qualidade.
 
 ------------------------------------------------------------------------
 
-## Tecnologias Utilizadas
+## Integração com análise por IA (Ollama)
+
+Após a execução dos testes, o relatório gerado pelo Playwright é enviado
+para uma **IA local executando via Ollama**.
+
+A IA interpreta:
+
+-   padrões de falha
+-   recorrência de erros
+-   impacto funcional
+-   risco para o usuário
+-   prioridade de correção
+
+O resultado não é apenas um relatório técnico.
+
+É uma **análise contextualizada do risco do sistema**.
+
+Isso simula um cenário próximo do mundo real:\
+a equipe não precisa somente saber *o que falhou*, mas *o que pode
+acontecer com o cliente*.
+
+------------------------------------------------------------------------
+
+## Tecnologias utilizadas
 
 -   Playwright
 -   JavaScript / Node.js
--   GitHub Actions (CI)
--   Relatórios HTML
--   Estrutura Page Object
--   Execução headless
+-   Relatórios HTML do Playwright
+-   Integração com LLM local via Ollama
+-   Testes E2E orientados a comportamento
 
 ------------------------------------------------------------------------
 
-## Pipeline de Integração Contínua
+## Estrutura dos testes
 
-A cada execução:
+Os testes cobrem:
 
-1.  o ambiente é preparado automaticamente
-2.  os testes são executados
-3.  falhas são registradas
-4.  relatórios são gerados
-5.  a equipe pode avaliar o risco da alteração
+-   login
+-   navegação
+-   formulários
+-   persistência de estado
+-   validações incorretas
+-   inconsistências de fluxo
 
-A automação passa então a participar diretamente da decisão:
+O foco não é apenas verificar se a página responde.
 
-> liberar ou não liberar uma versão
-
-------------------------------------------------------------------------
-
-## Execução Local
-
-Instalação:
-
-    npm install
-    npx playwright install
-
-Executar testes:
-
-    npx playwright test
-
-Abrir relatório:
-
-    npx playwright show-report
+O foco é validar se **o usuário consegue concluir a tarefa**.
 
 ------------------------------------------------------------------------
 
-## Relatórios
+## Como executar
 
-Os relatórios não servem apenas para indicar "passou" ou "falhou".\
-Eles permitem entender:
+Instalar dependências: ```  npx playwright install```
 
--   onde o fluxo quebrou
--   qual ação causou a falha
--   qual funcionalidade foi impactada
+Executar testes: ```  npx playwright test```
 
-Ou seja, a automação fornece **informação para decisão**, não apenas um
-resultado binário.
+Abrir relatório: ```  npx playwright show-report```
 
 ------------------------------------------------------------------------
 
-## Papel deste projeto no Portfólio
+## O que deve ser observado no relatório
 
-Enquanto outros projetos mostram análise de comportamento e reprodução
-de falhas, este repositório mostra:
+Mais importante que "teste passou" ou "teste falhou" é entender:
 
-**validação contínua e prevenção de problemas**.
+-   qual fluxo foi impactado
+-   qual ação o usuário não consegue concluir
+-   qual risco existe se for liberado
 
-Ele representa a etapa em que a qualidade passa a ser parte do processo
-de entrega --- não uma verificação tardia.
+Qualidade não é apenas detectar defeitos.
 
-Qualidade não é uma fase após o desenvolvimento.\
-É um mecanismo que acompanha a evolução do sistema.
+É impedir impacto ao usuário final.
+
+------------------------------------------------------------------------
+
+## Objetivo do projeto
+
+Este projeto demonstra que automação de testes não deve servir apenas
+para bloquear deploy.
+
+Ela deve:
+
+-   antecipar problemas
+-   orientar decisões
+-   apoiar desenvolvimento
+-   reduzir risco em produção
+
+Quanto mais cedo o risco é identificado, menor o custo e maior a
+confiança na entrega.
 
 ------------------------------------------------------------------------
 
