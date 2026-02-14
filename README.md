@@ -1,125 +1,134 @@
-# QA Playground Automation
+# QA Automation Portfolio
 
-Automação de testes end-to-end criada para validar, reproduzir e
-analisar comportamentos do **QA Playground**, um ambiente
-propositalmente construído com falhas funcionais semelhantes às
-encontradas em sistemas reais.
+Este repositório demonstra a **validação contínua de qualidade** por
+meio de automação, integração e análise de resultados.
 
-O objetivo deste projeto não é apenas executar testes automatizados.
+Aqui o foco não é apenas executar testes automatizados --- é **usar
+automação para apoiar decisão de entrega**.
 
-É demonstrar o ciclo completo de qualidade:
+O objetivo é mostrar como testes deixam de ser uma atividade isolada e
+passam a integrar o fluxo real de desenvolvimento.
 
-**observar → reproduzir → automatizar → interpretar → prevenir**
+------------------------------------------------------------------------
+
+## Objetivo
+
+Garantir que mudanças no sistema possam ser avaliadas rapidamente quanto
+a:
+
+-   risco funcional
+-   impacto de regressão
+-   comportamento do usuário
+-   estabilidade do fluxo principal
+
+A automação aqui funciona como **instrumento de prevenção**, permitindo
+identificar problemas antes que cheguem ao usuário final.
 
 ------------------------------------------------------------------------
 
 ## O que este projeto demonstra
 
-Este repositório simula a atuação de QA após a identificação de
-comportamentos suspeitos em um sistema.
+Este projeto evidencia competências práticas em:
 
-A automação:
+-   automação de testes E2E
+-   testes de API
+-   organização de cenários de validação
+-   geração de relatórios
+-   execução em pipeline CI
+-   análise de falhas
+-   apoio à decisão de release
 
--   reproduz cenários de erro
--   valida fluxos críticos
--   coleta evidências
--   gera relatórios estruturados
--   envia os resultados para análise inteligente
-
-Ou seja, não é somente automação de clique.
-
-É suporte à decisão de qualidade.
+A proposta não é substituir o QA humano --- e sim **ampliar sua
+capacidade de análise**.
 
 ------------------------------------------------------------------------
 
-## Integração com análise por IA (Ollama)
+## Estrutura
 
-Após a execução dos testes, o relatório gerado pelo Playwright é enviado
-para uma **IA local executando via Ollama**.
+Os testes são organizados por comportamento da aplicação:
 
-A IA interpreta:
+    tests/
+     ├─ login
+     ├─ navegação
+     ├─ carrinho / fluxo principal
+     ├─ validações
+     └─ API
 
--   padrões de falha
--   recorrência de erros
--   impacto funcional
--   risco para o usuário
--   prioridade de correção
-
-O resultado não é apenas um relatório técnico.
-
-É uma **análise contextualizada do risco do sistema**.
-
-Isso simula um cenário próximo do mundo real:\
-a equipe não precisa somente saber *o que falhou*, mas *o que pode
-acontecer com o cliente*.
+Cada cenário busca validar o que realmente importa:\
+se o usuário consegue concluir sua tarefa.
 
 ------------------------------------------------------------------------
 
-## Tecnologias utilizadas
+## Tecnologias Utilizadas
 
 -   Playwright
 -   JavaScript / Node.js
--   Relatórios HTML do Playwright
--   Integração com LLM local via Ollama
--   Testes E2E orientados a comportamento
+-   GitHub Actions (CI)
+-   Relatórios HTML
+-   Estrutura Page Object
+-   Execução headless
 
 ------------------------------------------------------------------------
 
-## Estrutura dos testes
+## Pipeline de Integração Contínua
 
-Os testes cobrem:
+A cada execução:
 
--   login
--   navegação
--   formulários
--   persistência de estado
--   validações incorretas
--   inconsistências de fluxo
+1.  o ambiente é preparado automaticamente
+2.  os testes são executados
+3.  falhas são registradas
+4.  relatórios são gerados
+5.  a equipe pode avaliar o risco da alteração
 
-O foco não é apenas verificar se a página responde.
+A automação passa então a participar diretamente da decisão:
 
-O foco é validar se **o usuário consegue concluir a tarefa**.
-
-------------------------------------------------------------------------
-
-## Como executar
-
-Instalar dependências: ```npx playwright install```
-
-Executar testes: ```npx playwright test```
-
-Abrir relatório: ```npx playwright show-report```
+> liberar ou não liberar uma versão
 
 ------------------------------------------------------------------------
 
-## O que deve ser observado no relatório
+## Execução Local
 
-Mais importante que "teste passou" ou "teste falhou" é entender:
+Instalação:
 
--   qual fluxo foi impactado
--   qual ação o usuário não consegue concluir
--   qual risco existe se for liberado
+    npm install
+    npx playwright install
 
-Qualidade não é apenas detectar defeitos.
+Executar testes:
 
-É impedir impacto ao usuário final.
+    npx playwright test
+
+Abrir relatório:
+
+    npx playwright show-report
 
 ------------------------------------------------------------------------
 
-## Objetivo do projeto
+## Relatórios
 
-Este projeto demonstra que automação de testes não deve servir apenas
-para bloquear deploy.
+Os relatórios não servem apenas para indicar "passou" ou "falhou".\
+Eles permitem entender:
 
-Ela deve:
+-   onde o fluxo quebrou
+-   qual ação causou a falha
+-   qual funcionalidade foi impactada
 
--   antecipar problemas
--   orientar decisões
--   apoiar desenvolvimento
--   reduzir risco em produção
+Ou seja, a automação fornece **informação para decisão**, não apenas um
+resultado binário.
 
-Quanto mais cedo o risco é identificado, menor o custo e maior a
-confiança na entrega.
+------------------------------------------------------------------------
+
+## Papel deste projeto no Portfólio
+
+Enquanto outros projetos mostram análise de comportamento e reprodução
+de falhas, este repositório mostra:
+
+**validação contínua e prevenção de problemas**.
+
+Ele representa a etapa em que a qualidade passa a ser parte do processo
+de entrega --- não uma verificação tardia.
+
+Qualidade não é uma fase após o desenvolvimento.\
+É um mecanismo que acompanha a evolução do sistema.
 
 ------------------------------------------------------------------------
 
