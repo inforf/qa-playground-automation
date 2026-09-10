@@ -1,138 +1,107 @@
 # QA Playground Automation
 
-Automação de testes end-to-end criada para validar, reproduzir e
-analisar comportamentos do **QA Playground**, um ambiente
-propositalmente construído com falhas funcionais semelhantes às
-encontradas em sistemas reais.
+Suíte E2E em Playwright criada para reproduzir automaticamente os cenários do **QA Playground**.
 
-O objetivo deste projeto não é apenas executar testes automatizados.
+🔗 Playground: https://inforf.github.io/qa-playground/
 
-É demonstrar o ciclo completo de qualidade:
+Este projeto é separado do site e tem uma responsabilidade clara: transformar falhas observadas manualmente em testes reproduzíveis de regressão.
 
-**observar → reproduzir → automatizar → interpretar → prevenir**
+---
 
-------------------------------------------------------------------------
+## Cenários automatizados
 
-## O que este projeto demonstra
+A suíte atual cobre os três cenários existentes no Playground:
 
-Este repositório simula a atuação de QA após a identificação de
-comportamentos suspeitos em um sistema.
+1. **Modal que não fecha**
+   - abre o modal
+   - verifica se o fluxo consegue retornar ao estado esperado
 
-A automação:
+2. **API lenta / carregamento infinito**
+   - inicia o carregamento
+   - verifica se a interface permanece presa no estado de espera
 
--   reproduz cenários de erro
--   valida fluxos críticos
--   coleta evidências
--   gera relatórios estruturados
--   envia os resultados para análise inteligente
+3. **Formulário com validação incorreta**
+   - envia email inválido e idade negativa
+   - verifica se a aplicação rejeita o estado indevido
 
-Ou seja, não é somente automação de clique.
+Os testes usam `expect.soft` para continuar a execução e coletar evidências mesmo quando um cenário falha.
 
-É suporte à decisão de qualidade.
+---
 
-------------------------------------------------------------------------
+## Objetivo
 
-## Integração com análise por IA (Ollama)
+O ciclo demonstrado é:
 
-Após a execução dos testes, o relatório gerado pelo Playwright é enviado
-para uma **IA local executando via Ollama**.
+**explorar manualmente → reproduzir → automatizar → coletar evidências → analisar**
 
-A IA interpreta:
+O Playground serve para investigação manual.
 
--   padrões de falha
--   recorrência de erros
--   impacto funcional
--   risco para o usuário
--   prioridade de correção
+Este repositório serve para regressão automatizada dos mesmos comportamentos.
 
-O resultado não é apenas um relatório técnico.
+---
 
-É uma **análise contextualizada do risco do sistema**.
+## Relatórios e IA local
 
-Isso simula um cenário próximo do mundo real:\
-a equipe não precisa somente saber *o que falhou*, mas *o que pode
-acontecer com o cliente*.
+O projeto inclui um script de análise em `scripts/ai-report.js` e documentação em `docs/relatorio-execucao.md`.
 
-------------------------------------------------------------------------
+A proposta é utilizar os resultados do Playwright como entrada para análise contextual com uma LLM local via Ollama, transformando evidência técnica em informação mais útil para avaliação de risco.
 
-## Tecnologias utilizadas
+---
 
--   Playwright
--   JavaScript / Node.js
--   Relatórios HTML do Playwright
--   Integração com LLM local via Ollama
--   Testes E2E orientados a comportamento
+## Tecnologias
 
-------------------------------------------------------------------------
+- Playwright
+- JavaScript / Node.js
+- Relatórios HTML do Playwright
+- Ollama / LLM local
+- Testes E2E orientados a comportamento
 
-## Estrutura dos testes
-
-Os testes cobrem:
-
--   login
--   navegação
--   formulários
--   persistência de estado
--   validações incorretas
--   inconsistências de fluxo
-
-O foco não é apenas verificar se a página responde.
-
-O foco é validar se **o usuário consegue concluir a tarefa**.
-
-------------------------------------------------------------------------
+---
 
 ## Como executar
 
-Instalar dependências:  
-```  
+Instale as dependências:
+
+```bash
+npm install
+```
+
+Instale os browsers do Playwright:
+
+```bash
 npx playwright install
 ```
 
-Executar testes:  
-```  
+Execute os testes:
+
+```bash
 npx playwright test
 ```
 
-Abrir relatório:  
-```  
+Abra o relatório:
+
+```bash
 npx playwright show-report
 ```
 
-------------------------------------------------------------------------
+---
 
-## O que deve ser observado no relatório
+## Estrutura
 
-Mais importante que "teste passou" ou "teste falhou" é entender:
+```text
+tests/
+  qa-playground.spec.ts
 
--   qual fluxo foi impactado
--   qual ação o usuário não consegue concluir
--   qual risco existe se for liberado
+scripts/
+  ai-report.js
 
-Qualidade não é apenas detectar defeitos.
+docs/
+  relatorio-execucao.md
+```
 
-É impedir impacto ao usuário final.
-
-------------------------------------------------------------------------
-
-## Objetivo do projeto
-
-Este projeto demonstra que automação de testes não deve servir apenas
-para bloquear deploy.
-
-Ela deve:
-
--   antecipar problemas
--   orientar decisões
--   apoiar desenvolvimento
--   reduzir risco em produção
-
-Quanto mais cedo o risco é identificado, menor o custo e maior a
-confiança na entrega.
-
-------------------------------------------------------------------------
+---
 
 ## Autor
 
-Ronaldo Ferreira\
+Ronaldo Ferreira  
 https://github.com/inforf
