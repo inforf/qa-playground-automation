@@ -17,7 +17,7 @@ export default defineConfig({
   ],
 
   use: {
-    headless: false,
+    headless: true,
     viewport: { width: 1280, height: 800 },
     actionTimeout: 10_000,
     video: "off",
